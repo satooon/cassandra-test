@@ -1,0 +1,19 @@
+nodeA:
+  image: poklet/cassandra
+  volumes:
+    - ./etc/cassandra/config/nodeA.yaml:/etc/cassandra/conf/cassandra.yaml
+  hostname: nodeA
+nodeB:
+  image: poklet/cassandra
+  volumes:
+    - ./etc/cassandra/config/nodeB.yaml:/etc/cassandra/conf/cassandra.yaml
+  hostname: nodeB
+  links:
+    - nodeA
+nodeC:
+  image: poklet/cassandra
+  volumes:
+    - ./etc/cassandra/config/nodeC.yaml:/etc/cassandra/conf/cassandra.yaml
+  hostname: nodeC
+  links:
+    - nodeA
